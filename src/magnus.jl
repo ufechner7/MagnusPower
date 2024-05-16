@@ -4,7 +4,7 @@ using ControlPlots
 # x: speed ratio
 # x = ωR/v_a
 function cd(x)
-    -0.0211*x^3 + 0.1837*x^2 +1.1183*x+0.5
+    -0.0211*x^3 + 0.1837*x^2 +0.1183*x+0.5
 end
 
 # x: speed ratio
@@ -16,3 +16,5 @@ X=1:0.1:5.5
 CL = cl.(X)
 CD = cd.(X)
 LoD = CL ./ CD
+
+plot(X,LoD)
