@@ -35,4 +35,12 @@ Suggested:
 *Operating cycle optimization for a Magnus effect-based airborne wind energy system,*
 Energy Conversion and Management, Volume 90, 2015
 
+[2] Yashank Gupta. Magnus Based Airborne Wind Energy Systems. Automatic. Université Grenoble
+Alpes, 2018. English. NNT : 2018GREAT094. tel-02113723v2
+
+[3] Eduardo Schmidt, Yashank Gupta, Jonathan Dumon, Ahmad Hably. In-flight estimation of the
+aerodynamic characteristics of a Magnus effect-based airborne wind energy system. REDEC 2018 -
+International Conference on Renewable Energies for Developing countries (REDEC 2018), Nov 2018,
+Beyrouth, Lebanon. 10.1109/REDEC.2018.8598022. hal-01895342
+
 
