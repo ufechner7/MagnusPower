@@ -15,13 +15,13 @@ function cl(x)
     0.0126 * x^4 - 0.2004*x^3 + 0.7482*x^2 + 1.3447*x
 end
 
-function calc_force(elev, x, v_wind::Float64)
+function calc_force(x, v_wind::Float64)
     v_app = v_wind
     CL = cl(x) 
     CD = cd(x)
-    # L = (-0.5 * RHO * (norm(va_xz2))^2 * AREA * CL) * normalize(va_2 × y)
-    # D = (-0.5 * RHO * norm(va_2) * AREA * CD) * va_2
-
+    L = -0.5 * RHO * v_a^2 * AREA * CL
+    D = -0.5 * RHO * va^2 * AREA * CD
+    [L, D]
 end
 
 X=0.0:0.1:5.5
