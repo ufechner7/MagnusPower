@@ -3,6 +3,7 @@ using ControlPlots, LinearAlgebra
 
 const RHO = 1.225  # air density at zero height and 15 °C    [kg/m³]
 const AREA = 0.8   # area of the cylinder in m²
+const R = 0.2      # radius in m
 
 # x: speed ratio
 # x = ωR/v_a
@@ -16,13 +17,18 @@ function cl(x)
 end
 
 # x: speed ratio
-function calc_force(x, v_wind::Float64)
+# calculate the tether force and evelation angle in quasi-steady state
+function calc_steady_force(x, v_wind::Float64)
     v_a = v_wind
     CL = cl(x) 
     CD = cd(x)
     L = 0.5 * RHO * v_a^2 * AREA * CL
     D = 0.5 * RHO * v_a^2 * AREA * CD
     norm([L, D]), rad2deg(atan(L, D))
+end
+
+# calculate the force vector for dynamic simulation
+function calc_force(elev, x, v_wind::Float64)
 end
 
 X = 0.0:0.1:5.5

@@ -28,6 +28,8 @@ Suggested:
 - buoyancy ~ 0.26 kg
 - price for helium ~ 0.15 EUR/l
 
+## TODO
+- implement calc_force in 2D for dynamic simulation
 
 ## References
 
