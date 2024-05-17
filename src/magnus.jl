@@ -1,9 +1,11 @@
 using ControlPlots, LinearAlgebra
 # Re = 3.8e4
+# xz coordination system, x downwind, z upwards
 
 const RHO = 1.225  # air density at zero height and 15 °C    [kg/m³]
 const AREA = 0.8   # area of the cylinder in m²
 const R = 0.2      # radius in m
+const M = 0.25     # mass of the cylinder incl. motor in kg
 
 # x: speed ratio
 # x = ωR/v_a
@@ -24,11 +26,20 @@ function calc_steady_force(x, v_wind::Float64)
     CD = cd(x)
     L = 0.5 * RHO * v_a^2 * AREA * CL
     D = 0.5 * RHO * v_a^2 * AREA * CD
-    norm([L, D]), rad2deg(atan(L, D))
+    norm([D, L]), rad2deg(atan(L, D))
 end
 
-# calculate the force vector for dynamic simulation
-function calc_force(elev, x, v_wind::Float64)
+# calculate the force and acceleration vectors for dynamic simulation
+function calc_force_acc(elev, x, v_wind::Float64)
+    v_a = v_wind
+    CL = cl(x) 
+    CD = cd(x)
+    L = 0.5 * RHO * v_a^2 * AREA * CL
+    D = 0.5 * RHO * v_a^2 * AREA * CD
+    f_a = [D, L] # aerodynamic force
+    # calculate force vector in the direction of the tether
+    # calculate sum of f_a and f_t
+    # return f_t, acc
 end
 
 X = 0.0:0.1:5.5
