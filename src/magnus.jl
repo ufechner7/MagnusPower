@@ -63,4 +63,4 @@ CL = cl.(X)
 CD = cd.(X)
 LoD = CL ./ CD
 
-plot(X,LoD, xlabel="Speed ratio", ylabel="Lift over Drag")
+plot(X, LoD, xlabel="Speed ratio", ylabel="Lift over Drag")
