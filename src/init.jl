@@ -1,3 +1,4 @@
+using Timers; tic()
 using ControlPlots, LinearAlgebra, ModelingToolkit, Revise
 # Re = 3.8e4
 # xz coordination system, x downwind, z upwards
@@ -32,7 +33,7 @@ end
 # calculate the force and acceleration vectors for dynamic simulation
 # elev: elevation angle [rad]
 # returns: f_t, acc with f_t: tether force vector and acc: acceleration vector
-function calc_force_acc(elev, x, v_wind::Real)
+function calc_force_acc(elev, x, v_wind)
     v_a = v_wind
     CL = cl(x) 
     CD = cd(x)
@@ -47,9 +48,12 @@ function calc_force_acc(elev, x, v_wind::Real)
     f_t = - f_pos
     # calculate sum of f_a and f_t
     f_acc = f_a + f_t
-    return f_t, f_acc/M
+    return f_acc/M
 end
 
-@register_symbolic calc_force_acc(elev, x, v_wind::Real)
+@register_array_symbolic calc_force_acc(elev, x, v_wind) begin
+    size=(2,)
+    eltype=eltype(elev)
+end
 
 includet("main.jl")
